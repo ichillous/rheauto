@@ -22,10 +22,10 @@ export default function AboutPage() {
       <section className="section-shell owner-section">
         <div className="owner-logo-panel">
           <Image
-            src="/rhe-auto-logo.jpg"
+            src="/rhe-auto-logo.png"
             alt="RHE Auto logo"
-            width={1280}
-            height={1271}
+            width={1254}
+            height={1254}
           />
           <span>{site.owner.focus}</span>
         </div>

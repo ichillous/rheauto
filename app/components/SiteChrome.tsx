@@ -14,7 +14,7 @@ export function SiteHeader() {
     <header className="site-header">
       <Link className="brand" href="/" aria-label="RHE Auto home">
         <span className="brand-mark">
-          <Image src="/rhe-auto-logo.jpg" alt="" width={60} height={60} />
+          <Image src="/rhe-auto-logo.png" alt="" width={60} height={60} />
         </span>
         <span className="brand-copy">
           <strong>RHE AUTO</strong>
@@ -60,7 +60,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-top">
         <Link className="footer-brand" href="/">
-          <Image src="/rhe-auto-logo.jpg" alt="" width={70} height={70} />
+          <Image src="/rhe-auto-logo.png" alt="" width={70} height={70} />
           <span>
             <strong>RHE AUTO</strong>
             <small>Certified Technicians Service</small>

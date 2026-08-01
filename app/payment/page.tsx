@@ -24,10 +24,10 @@ export default function PaymentPage() {
         <div className="payment-card">
           <div className="payment-logo">
             <Image
-              src="/rhe-auto-logo.jpg"
+              src="/rhe-auto-logo.png"
               alt="RHE Auto logo"
-              width={1280}
-              height={1271}
+              width={1254}
+              height={1254}
             />
           </div>
           <div className="payment-copy">

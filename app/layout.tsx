@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   description:
     "RHE Auto offers vehicle sales, diagnostics, service calls, service checks, key programming, and electric-focused automotive help in Columbus, Ohio.",
   icons: {
-    icon: "/rhe-auto-logo.jpg",
-    shortcut: "/rhe-auto-logo.jpg",
-    apple: "/rhe-auto-logo.jpg",
+    icon: "/rhe-auto-logo.png",
+    shortcut: "/rhe-auto-logo.png",
+    apple: "/rhe-auto-logo.png",
   },
   openGraph: {
     title: "RHE Auto | Columbus, Ohio",
@@ -52,7 +52,7 @@ const structuredData = {
   "@type": "AutomotiveBusiness",
   name: site.name,
   url: site.url,
-  image: `${site.url}/rhe-auto-logo.jpg`,
+  image: `${site.url}/rhe-auto-logo.png`,
   email: site.email,
   telephone: "+1-614-321-7743",
   address: {
