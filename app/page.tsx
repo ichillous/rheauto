@@ -1,317 +1,164 @@
-const phoneDisplay = "(614) 321-7743";
-const phoneHref = "tel:+16143217743";
-const address = "2778 Cleveland Ave, Columbus, OH 43224";
-const directionsHref =
-  "https://www.google.com/maps/dir/?api=1&destination=2778+Cleveland+Ave%2C+Columbus%2C+OH+43224";
-
-const services = [
-  {
-    number: "01",
-    title: "Used vehicles",
-    description:
-      "Looking for your next ride? Call to hear what’s currently available and find a vehicle that fits your needs.",
-    action: "Ask about inventory",
-    href: phoneHref,
-  },
-  {
-    number: "02",
-    title: "Auto diagnostics",
-    description:
-      "Warning light on? Strange sound? Start with a professional diagnostic check to get a clearer picture.",
-    action: "Schedule a check",
-    href: phoneHref,
-  },
-  {
-    number: "03",
-    title: "Key programming",
-    description:
-      "Get help programming a compatible replacement or spare key for your vehicle.",
-    action: "Call for compatibility",
-    href: phoneHref,
-  },
-  {
-    number: "04",
-    title: "Vehicle checks",
-    description:
-      "Have a concern about your car? Bring it in for a focused inspection and straightforward next steps.",
-    action: "Talk with RHE Auto",
-    href: phoneHref,
-  },
-];
+import Link from "next/link";
+import {
+  certifications,
+  pricedServices,
+  site,
+} from "./site-data";
 
 export default function Home() {
   return (
-    <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="RHE Auto home">
-          <span className="brand-mark">
-            <img src="/rhe-auto-logo.jpg" alt="" width="64" height="64" />
-          </span>
-          <span className="brand-copy">
-            <strong>RHE AUTO</strong>
-            <small>Columbus, Ohio</small>
-          </span>
-        </a>
-
-        <nav className="desktop-nav" aria-label="Main navigation">
-          <a href="#services">What we do</a>
-          <a href="#about">Why RHE</a>
-          <a href="#visit">Visit</a>
-        </nav>
-
-        <a className="header-call" href={phoneHref}>
-          <span>Call now</span>
-          <strong>{phoneDisplay}</strong>
-        </a>
-      </header>
-
-      <section className="hero" id="top">
-        <div className="hero-image" aria-hidden="true" />
-        <div className="hero-shade" aria-hidden="true" />
-
-        <div className="hero-content">
+    <>
+      <section className="home-hero">
+        <div className="home-hero-image" aria-hidden="true" />
+        <div className="home-hero-shade" aria-hidden="true" />
+        <div className="home-hero-content">
           <p className="eyebrow">
-            <span />
-            Cars • Diagnostics • Keys
+            <span /> Cars • Diagnostics • Service • Electric
           </p>
           <h1>
-            Your next car.
+            Built to keep
             <br />
-            <em>Your current car.</em>
+            <em>Columbus moving.</em>
           </h1>
           <p className="hero-lead">
-            RHE Auto helps Columbus drivers find a vehicle, understand what
-            their car needs, and get back on the road.
+            RHE Auto brings vehicle sales and certified technicians service
+            together at one Cleveland Avenue location.
           </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href={phoneHref}>
-              Call {phoneDisplay}
-              <span aria-hidden="true">↗</span>
-            </a>
+          <div className="button-row">
             <a
-              className="button button-ghost"
-              href={directionsHref}
+              className="button button-primary"
+              href={site.links.appointment}
               target="_blank"
               rel="noreferrer"
             >
-              Get directions
+              Make an appointment <span aria-hidden="true">↗</span>
             </a>
+            <Link className="button button-ghost" href="/services">
+              View services &amp; prices
+            </Link>
           </div>
         </div>
-
-        <div className="hero-card">
-          <p>Now helping with</p>
-          <strong>Vehicle sales &amp; auto services</strong>
-          <span>Call for current availability</span>
+        <div className="owner-card">
+          <span>Meet the CEO</span>
+          <strong>{site.owner.name}</strong>
+          <p>{site.owner.focus} • RHE Auto</p>
         </div>
       </section>
 
-      <section className="quick-strip" aria-label="Quick business information">
+      <section className="home-price-strip" aria-label="Service prices">
+        {pricedServices.map((service) => (
+          <Link href="/services" key={service.name}>
+            <span>{service.name}</span>
+            <strong>{service.price}</strong>
+          </Link>
+        ))}
+        <a
+          className="price-strip-action"
+          href={site.links.appointment}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Schedule service <span aria-hidden="true">→</span>
+        </a>
+      </section>
+
+      <section className="section-shell intro-section">
         <div>
-          <span className="strip-label">Located in</span>
-          <strong>Columbus, Ohio</strong>
+          <p className="eyebrow eyebrow-dark">
+            <span /> One local automotive team
+          </p>
+          <h2>More than a car lot.</h2>
         </div>
-        <div>
-          <span className="strip-label">Call or text</span>
-          <a href={phoneHref}>{phoneDisplay}</a>
-        </div>
-        <div>
-          <span className="strip-label">Visit us</span>
-          <a href={directionsHref} target="_blank" rel="noreferrer">
-            2778 Cleveland Ave
-          </a>
+        <div className="intro-copy">
+          <p>
+            Shop for your next vehicle, arrange a diagnostic, schedule a
+            service call, or get a focused service check. RHE Auto makes the
+            next step direct and easy to understand.
+          </p>
+          <Link className="text-link" href="/services">
+            Explore every service <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 
-      <section className="services section-shell" id="services">
-        <div className="section-heading">
+      <section className="section-shell featured-grid">
+        <article className="feature-card feature-dark">
+          <span className="feature-number">01</span>
+          <h3>Certified technicians service</h3>
+          <p>
+            Automotive service backed by the credentials and professional
+            affiliations RHE Auto brings to the job.
+          </p>
+          <Link href="/about">Meet RHE Auto →</Link>
+        </article>
+        <article className="feature-card feature-photo">
+          <div className="feature-photo-image" aria-hidden="true" />
+          <div className="feature-photo-shade" aria-hidden="true" />
           <div>
-            <p className="eyebrow eyebrow-dark">
-              <span />
-              What we do
-            </p>
-            <h2>More than a car lot.</h2>
+            <span className="feature-number">02</span>
+            <h3>Looking for a vehicle?</h3>
+            <p>Inventory changes. Call to ask what is currently available.</p>
+            <a href={site.phones[0].href}>Call {site.phones[0].display} →</a>
           </div>
+        </article>
+        <article className="feature-card feature-green">
+          <span className="feature-number">03</span>
+          <h3>Need a faster answer?</h3>
           <p>
-            From finding a dependable ride to figuring out what’s going on
-            under the hood, RHE Auto is ready to help.
+            Message RHE Auto directly on WhatsApp with your vehicle and service
+            question.
           </p>
-        </div>
-
-        <div className="service-grid">
-          {services.map((service) => (
-            <article className="service-card" key={service.number}>
-              <span className="service-number">{service.number}</span>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              <a href={service.href}>
-                {service.action}
-                <span aria-hidden="true">→</span>
-              </a>
-            </article>
-          ))}
-        </div>
+          <a href={site.links.whatsapp} target="_blank" rel="noreferrer">
+            Open WhatsApp →
+          </a>
+        </article>
       </section>
 
-      <section className="about section-shell" id="about">
-        <div className="about-photo">
-          <img
-            src="/rhe-auto-logo.jpg"
-            alt="RHE Auto logo"
-            width="1280"
-            height="1271"
-          />
-          <span className="about-stamp">Local • Direct • Helpful</span>
-        </div>
-
-        <div className="about-copy">
-          <p className="eyebrow eyebrow-dark">
-            <span />
-            The RHE approach
-          </p>
-          <h2>Real help starts with a real conversation.</h2>
-          <p className="about-lead">
-            No complicated forms. No endless phone menu. Tell RHE Auto what you
-            need—whether that’s a vehicle, a diagnostic, a key, or a check—and
-            get clear next steps.
-          </p>
-          <div className="about-points">
-            <div>
-              <span>01</span>
-              <p>
-                <strong>Tell us what you need</strong>
-                Call with the vehicle or service you’re looking for.
-              </p>
-            </div>
-            <div>
-              <span>02</span>
-              <p>
-                <strong>Get availability</strong>
-                We’ll let you know what’s available and when to come in.
-              </p>
-            </div>
-            <div>
-              <span>03</span>
-              <p>
-                <strong>Visit RHE Auto</strong>
-                Stop by our Cleveland Avenue location in Columbus.
-              </p>
-            </div>
+      <section className="certification-band">
+        <div className="section-shell">
+          <p>Credentials &amp; affiliations</p>
+          <div className="certification-list">
+            {certifications.map((certification) => (
+              <span key={certification}>{certification}</span>
+            ))}
           </div>
-          <a className="text-link" href={phoneHref}>
-            Start with a call <span aria-hidden="true">→</span>
-          </a>
         </div>
       </section>
 
-      <section className="inventory-callout">
-        <div className="inventory-image" aria-hidden="true" />
-        <div className="inventory-shade" aria-hidden="true" />
-        <div className="inventory-content">
-          <p className="eyebrow">
-            <span />
-            Shopping for a vehicle?
-          </p>
-          <h2>Inventory changes.<br />The number doesn’t.</h2>
-          <p>
-            Call RHE Auto to ask what cars are currently available and arrange
-            a time to take a closer look.
-          </p>
-          <a className="button button-primary" href={phoneHref}>
-            Ask what’s available <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </section>
-
-      <section className="visit section-shell" id="visit">
-        <div className="visit-heading">
+      <section className="home-contact section-shell">
+        <div className="home-contact-copy">
           <p className="eyebrow eyebrow-dark">
-            <span />
-            Visit RHE Auto
+            <span /> RHE Auto • Columbus
           </p>
-          <h2>Let’s get you moving.</h2>
-        </div>
-
-        <div className="visit-card">
-          <div className="visit-details">
-            <span className="visit-kicker">RHE Auto</span>
-            <address>
-              2778 Cleveland Ave
-              <br />
-              Columbus, OH 43224
-            </address>
-            <a className="visit-phone" href={phoneHref}>
-              {phoneDisplay}
+          <h2>Start with a real conversation.</h2>
+          <p>
+            Tell Hughes and the RHE Auto team what you need. Call, schedule
+            online, or visit the Cleveland Avenue office.
+          </p>
+          <div className="button-row">
+            <a className="button button-dark" href={site.phones[0].href}>
+              Call {site.phones[0].display}
             </a>
-            <p>Call for current vehicle inventory and service availability.</p>
-            <div className="visit-actions">
-              <a
-                className="button button-dark"
-                href={directionsHref}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open in Maps <span aria-hidden="true">↗</span>
-              </a>
-              <a
-                className="button button-light"
-                href="https://www.facebook.com/rhe.auto.care/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Facebook
-              </a>
-            </div>
+            <Link className="button button-outline" href="/contact">
+              Contact options
+            </Link>
           </div>
-          <a
-            className="map-panel"
-            href={directionsHref}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Get directions to RHE Auto"
-          >
-            <div className="map-grid" aria-hidden="true" />
-            <div className="map-road road-one" aria-hidden="true" />
-            <div className="map-road road-two" aria-hidden="true" />
-            <div className="map-pin">
-              <span>RHE</span>
-            </div>
-            <strong>2778 Cleveland Ave</strong>
-            <span className="map-link">Get directions →</span>
-          </a>
         </div>
+        <a
+          className="address-card"
+          href={site.links.directions}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>Visit the office</span>
+          <strong>
+            2778 Cleveland Ave
+            <br />
+            Columbus, Ohio 43224
+          </strong>
+          <small>Open in Maps →</small>
+        </a>
       </section>
-
-      <footer>
-        <a className="footer-brand" href="#top">
-          <img src="/rhe-auto-logo.jpg" alt="" width="70" height="70" />
-          <span>
-            <strong>RHE AUTO</strong>
-            <small>Sales &amp; auto services</small>
-          </span>
-        </a>
-        <p>Serving drivers in Columbus, Ohio.</p>
-        <div className="footer-links">
-          <a href={phoneHref}>Call</a>
-          <a href={directionsHref} target="_blank" rel="noreferrer">
-            Directions
-          </a>
-          <a
-            href="https://www.facebook.com/rhe.auto.care/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Facebook
-          </a>
-        </div>
-      </footer>
-
-      <div className="mobile-bar">
-        <a href={phoneHref}>Call now</a>
-        <a href={directionsHref} target="_blank" rel="noreferrer">
-          Directions
-        </a>
-      </div>
-    </main>
+    </>
   );
 }
