@@ -28,6 +28,7 @@ export default function PaymentPage() {
               alt="RHE Auto logo"
               width={1254}
               height={1254}
+              unoptimized
             />
           </div>
           <div className="payment-copy">

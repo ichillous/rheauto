@@ -26,6 +26,7 @@ export default function AboutPage() {
             alt="RHE Auto logo"
             width={1254}
             height={1254}
+            unoptimized
           />
           <span>{site.owner.focus}</span>
         </div>

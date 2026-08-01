@@ -44,6 +44,7 @@ test("server-renders the multi-page RHE Auto site", async () => {
     assert.match(html, /href="\/contact"/i);
     assert.match(html, /\/rhe-auto-logo\.png/i);
     assert.doesNotMatch(html, /\/rhe-auto-logo\.jpg/i);
+    assert.doesNotMatch(html, /_vinext\/image\?url=%2Frhe-auto-logo/i);
     assert.doesNotMatch(html, /codex-preview|Building your site|Starter Project/i);
   }
 });
